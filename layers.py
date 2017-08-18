@@ -51,7 +51,7 @@ class EML(nn.Module):
         self.module = module
 
     def forward(self, x):
-        return x + self.module(x)
+        return x * self.module(x)
 
 # Channel-wise Concatenation Layer: Similar to ESL, but for DenseNets.
 class CL(nn.Module):
