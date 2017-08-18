@@ -122,7 +122,7 @@ def train_parser():
         '--resume', type=bool, default=False,
         help='Whether or not to resume training')
     parser.add_argument(
-        '--model', type=str, default='SMASHv8', metavar='FILE',
+        '--model', type=str, default='SMASH', metavar='FILE',
         help='Which model to use')
     parser.add_argument(
         '--SMASH', type=str, default=None,
