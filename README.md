@@ -26,14 +26,21 @@ Note that validation scores during training are calculated using a random archit
 After training, to sample and evaluate SMASH scores, call
 
 ```sh
-python train.py --SMASH=YOUR_MODEL_NAME_HERE.pth
+python eval.py --SMASH=YOUR_MODEL_NAME_HERE_.pth
 ```
 
 This will by default sample 500 random architectures, then perturb the best-found architecture 100 times, then employ a sort of Markov Chain to further perturb the best found architecture.
 
+To select the best architecture and train a resulting net, then call
+
+```sh
+python train.py --SMASH=YOUR_MODEL_NAME_HERE_archs.npz
+```
+
+This will by default take the best architectuure
 There are lots of different options, including a number of experimental settings such as architectural gradient descent by proxy, in-op multiplicative gating, variable nonlinearities, setting specific op configuration types. Take a look at the train_parser in utils.py for details, though note that some of these weirder ones may be deprecated. 
 
-This code has boilerplate for loading Imagenet32x32 and ModelNet, but doesn't download or preprocess them on its own. 
+This code has boilerplate for loading Imagenet32x32 and ModelNet, but doesn't download or preprocess them on its own. It supports model parallelism on a single node, and half-precision training, though simple weightnorm is unstable in FP16 so you probably can't train a SMASH network with it.
 ## Notes
 This README doc is in very early stages, and will be updated soon.
 
