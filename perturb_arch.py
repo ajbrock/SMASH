@@ -1,4 +1,5 @@
 import numpy as np
+import torch
 
 # A simple function to perturb the architecture.
 def perturb_architecture(net, arch, perturb_probability=0.05):
